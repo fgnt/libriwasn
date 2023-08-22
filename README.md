@@ -28,4 +28,4 @@ To cite this implementation, you can cite the following paper::
       Month     = {Sep},
     }
 
-To view the paper for a preview see `arXiv <http://arxiv.org/abs/2308.10682>`.
+To view the paper for a preview see arXiv <http://arxiv.org/abs/2308.10682>.
