@@ -1,7 +1,28 @@
-# libriwasn
-Tools and scripts for the LibriWASN data set from zenodo
+<h1 align="center">LibriWASN</h1> 
+<h3 align="center">A Data Set for Meeting Separation, Diarization, and Recognition
+with Asynchronous Recording Devices</h3>
 
-Installation
+**NOTE:** This repository currently is **under construction**.
+We will update and extend the code within the next weeks.
+
+
+Tools and reference meeting transcription pipeline of the LibriWASN data set ([preprint](http://arxiv.org/abs/2308.10682), [Zenodo data set link](https://zenodo.org/record/7960972)).
+
+The LibriWASN data set  consists of recordings of the same audio signals which also were played back to record the [LibriCSS](https://github.com/chenzhuo1011/libri_css) data set. 
+The data was recorded by nine different devices (five smartphones with a single recording channel and four microphone arrays) resulting in 29 audio channels in total.
+Note that the  sampling clocks of the different devices are not synchronized so that there exists a sampling rate offset (SRO) between the recordings of different devices.
+
+
+Zenodo
+======
+The data set and auxiliary materials are availabe on [Zenodo](https://zenodo.org/record/7960972).  
+Available auxiliary:
+   * Pictures of the recording setups
+   * Speaker and microphone position information 
+   * Ground-truth diarization information of who speaks when
+
+
+Download
 ========
 
 How to extract the files on Linux OS
@@ -18,7 +39,7 @@ How to extract the files on Linux OS
 Citation
 ========
 
-To cite this implementation, you can cite the following paper::
+If you are using the LibriWASN data set or this code please cite the following paper:
 
     @InProceedings{SchTgbHaeb2023,
       Title     = {LibriWASN: A Data Set for Meeting Separation, Diarization, and Recognition with Asynchronous Recording Devices},
@@ -27,5 +48,3 @@ To cite this implementation, you can cite the following paper::
       Year      = {2023},
       Month     = {Sep},
     }
-
-To view the paper for a preview see arXiv <http://arxiv.org/abs/2308.10682>.
