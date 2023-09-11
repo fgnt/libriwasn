@@ -10,14 +10,14 @@ from meeteval.io.stm import STMLine, STM
     '--json_path',
     '-json',
     type=str,
-    default='/net/vol/tgburrek/db/libriwasn/libriwasn.json',
+    default='libriwasn/libriwasn.json',
     help='Path of the database json. Defaults to "libriwasn/libriwasn.json".'
 )
 @click.option(
     '--stm_path',
     '-stm',
     type=str,
-    default='/net/vol/tgburrek/db/libriwasn/ref_transcription.stm',
+    default='libriwasn/ref_transcription.stm',
     help=('Base directory of the databases. '
           'Defaults to "libriwasn/ref_transcription.stm".')
 )

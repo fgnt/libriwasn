@@ -135,7 +135,7 @@ def download_libricss(database_path):
     '--database_path',
     '-db',
     type=str,
-    default='/net/vol/tgburrek/db/libriwasn_2_0/',
+    default='libriwasn/',
     help='Base directory for the databases. Defaults to "libriwasn/".'
 )
 def main(database_path):

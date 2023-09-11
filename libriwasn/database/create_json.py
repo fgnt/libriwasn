@@ -119,14 +119,14 @@ def create_database(database_path: Path, sample_rate=16000):
     '--database_path',
     '-db',
     type=str,
-    default='/net/vol/tgburrek/db/libriwasn/',
+    default='libriwasn/',
     help='Base directory of the databases. Defaults to "libriwasn/".'
 )
 @click.option(
     '--json_path',
     '-json',
     type=str,
-    default='/net/vol/tgburrek/db/libriwasn/libriwasn.json',
+    default='libriwasn/libriwasn.json',
     help=('Path of the json-file to be created. '
           'Defaults to "libriwasn/libriwasn.json".')
 )
