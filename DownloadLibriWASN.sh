@@ -15,15 +15,15 @@ echo "5d681c70dd919af1080a129237d2ef32  LibriWASN_800_OV30.zip">>check.md5
 echo "10efa8b713a6dc29a3e3ead4a744f050  LibriWASN_800_OV40.zip">>check.md5
 
 echo "Creating Path"
-mkdir -p LibriWASN
+mkdir -p LibriWASN/aux_files
 echo "Start Additional file download"
-wget https://zenodo.org/record/7960972/files/ccby4.txt -q --show-progress -P LibriWASN/
-wget https://zenodo.org/record/7960972/files/LibirWASN200_Picture.png -q --show-progress -P LibriWASN/
-wget https://zenodo.org/record/7960972/files/LibriWASN200_Positions.pdf -q --show-progress -P LibriWASN/
-wget https://zenodo.org/record/7960972/files/LibriWASN200_Setup.png -q --show-progress -P LibriWASN/
-wget https://zenodo.org/record/7960972/files/Positions200.pdf -q --show-progress -P LibriWASN/
-wget https://zenodo.org/record/7960972/files/Positions800.pdf -q --show-progress -P LibriWASN/
-wget https://zenodo.org/record/7960972/files/readme.txt -q --show-progress -P LibriWASN/
+wget https://zenodo.org/record/7960972/files/ccby4.txt -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/7960972/files/LibirWASN200_Picture.png -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/7960972/files/LibriWASN200_Positions.pdf -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/7960972/files/LibriWASN200_Setup.png -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/7960972/files/Positions200.pdf -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/7960972/files/Positions800.pdf -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/7960972/files/readme.txt -q --show-progress -P LibriWASN/aux_files/
 
 
 echo "Start Audio file download"
@@ -61,3 +61,16 @@ fi
 
 echo "Clean up"
 rm check.md5
+
+echo "Start download of LibriCSS"
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Piioxd5G_85K9Bhcr8ebdhXx0CnaHy7l' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Piioxd5G_85K9Bhcr8ebdhXx0CnaHy7l" -O for_release.zip && rm -rf /tmp/cookies.txt
+
+echo "Unpack LibriCSS"
+unzip for_release.zip
+rm for_release.zip
+
+echo "Adjust folder structure"
+mv LibriWASN/200 LibriWASN/libriwasn_200
+mv LibriWASN/800 LibriWASN/libriwasn_800
+mv for_release LibriCSS
+
