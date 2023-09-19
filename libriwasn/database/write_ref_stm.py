@@ -17,13 +17,16 @@ from meeteval.io.stm import STMLine, STM
     '--stm_path',
     '-stm',
     type=str,
-    default='libriwasn/ref_transcription.stm',
-    help=('Base directory of the databases. '
-          'Defaults to "libriwasn/ref_transcription.stm".')
+    default=None,
+    help=('Base directory of the databases. Defaults to '
+          '"ref_transcription.stm" in the same directory as the database json')
 )
 def main(json_path, stm_path):
     json_path = Path(json_path).absolute()
-    stm_path = Path(stm_path).absolute()
+    if stm_path is not None:
+        stm_path = Path(stm_path).absolute()
+    else:
+        stm_path = stm_path.parent / 'ref_transcription.stm'
     assert stm_path.suffix == '.stm', \
         f'Json file must end with ".stm" and not "{stm_path.suffix}"'
     stm_lines = []
