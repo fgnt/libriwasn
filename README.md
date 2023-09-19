@@ -281,16 +281,33 @@ mpiexec -np <num_processes> python -m libriwasn.reference_system.separate_source
 mpiexec -np <num_processes> python -m libriwasn.reference_system.transcribe ...
 ```
 
-To speed up the transcription system GPU-based decoding can be enabled ():
+To speed up the transcription system GPU-based decoding can be enabled:
 ```bash
 python -m libriwasn.reference_system.transcribe --enable_gpu=True ...
 ```
 Note that a parellelization via MPI (mentioned above) is not supported for GPU-based decoding.
 
+##### Further comments
+Tiny changes were made to some parts of the code w.r.t. the version of the code in the paper.
+This might lead to tiny differences in the resulting cpWER in comparison to the values in the paper.
+However, these differences are not significant.
+
+In the paper we used Kaldi-alignments to segment the clean LibriSpeech utterances in the experiment "Clean (played back LibriSpeech utterances)" if they were too long for the automatic speech recognition system (see comment in the [code](libriwasn/asr/espnet_wrapper.py)).
+Here, we use the segmentation using an energy-based voice activity detection (VAD), which is also used for all other systems. 
+We also fixed as small error in the VAD-based segmentation w.r.t. the code used to write the paper.
+
+The ground truth diarization information, which is provided via Zenodo, tends to underestimate the speakers' activities.
+Therefore, we here adapt the utterance boundaries (see *onset* and *num_samples* in the database json file) provided by LibriCSS data set to the LibriWASN data set in order to obtain the activities for the experiments with an oracle segmentation.  
+
+Moreover, we observed that there are some abrupt changes in the amount of partly around 1000 samples in the time differences of arrival (TDOAs) between the LibriCSS recordings and the clean speech mixture.
+These high TDOAs cannot be explained by the time differences of flight (TDOFs) and therefore may result from  technical issues during the recording. 
+Another effect of these high TDOAs is tha the utterance boundaries used for the oracle segmentation experiment on LibriCSS might not always perfectly fit to the LibriCSS recordings.
+This might result in a slightly higher cpWER compared to the LibriWASN data sets which do not show this effect. 
+
 # Citation
 If you are using the LibriWASN data set or this code please cite the following paper:
 
-    @InProceedings{SchTgbHaeb2023,
+    @InProceedings{SchGbHaeb2023,
       Title     = {LibriWASN: A Data Set for Meeting Separation, Diarization, and Recognition with Asynchronous Recording Devices},
       Author    = {Joerg Schmalenstroeer and Tobias Gburrek and Reinhold Haeb-Umbach},
       Booktitle = {ITG conference on Speech Communication (ITG 2023)},
