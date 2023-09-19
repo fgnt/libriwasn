@@ -22,7 +22,8 @@ from meeteval.io.stm import STMLine, STM
           'Defaults to "libriwasn/ref_transcription.stm".')
 )
 def main(json_path, stm_path):
-    stm_path = Path(stm_path)
+    json_path = Path(json_path).absolute()
+    stm_path = Path(stm_path).absolute()
     assert stm_path.suffix == '.stm', \
         f'Json file must end with ".stm" and not "{stm_path.suffix}"'
     stm_lines = []

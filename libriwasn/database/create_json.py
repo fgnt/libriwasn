@@ -131,8 +131,8 @@ def create_database(database_path: Path, sample_rate=16000):
           'Defaults to "libriwasn/libriwasn.json".')
 )
 def main(database_path, json_path):
-    database_path = Path(database_path)
-    json_path = Path(json_path)
+    database_path = Path(database_path).absolute()
+    json_path = Path(json_path).absolute()
     assert json_path.suffix == '.json', \
         f'Json file must end with ".json" and not "{json_path.suffix}"'
     database = create_database(database_path)
