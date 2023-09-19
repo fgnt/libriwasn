@@ -58,7 +58,7 @@ python -m libriwasn.databases.download -db /your/database/path/
   3. Execute *./DownloadLibriWASN.sh* from shell. This will download all files, check sanity by md5sum and extract the files to */your/database/path/*.
 
 
-# Database Structure
+# Database structure
 The downloaded data has the following database structure w.r.t. the path your desired database path:
 ```
 ├── LibriWASN
@@ -189,6 +189,85 @@ Create a segmental time mark (STM) file for the reference transcription:
 python -m libriwasn.databases.write_ref_stm --json_path /your/database/path/libriwasn.json
 ```
 This STM file is used when calculating the  concatenated minimum-Permutation Word Error Rate (cpWER).
+
+# Reference sytem
+In the following the usage of the reference system will be explained.
+Note that the corresponding python scripts also serve as examples showing how to use the database and the different parts of the reference system (mask estimation, beamforming, ...). 
+
+
+##### Example (LibriWASN<sup>200</sup>: Sys-2)
+To run experiments using the reference system change your working directory to your desired experiment directory, e.g. */your/libriwasn_experiment/path/*.
+Afterwards, run the following command, for example, to separate the speakers' signals using sys-2 of the experimental section of the paper on LibriWASN<sup>200</sup>:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys2_libriwasn200 db_json=/your/database/path/libriwasn.json
+```
+This script will write the separated singals of the speakers into the directory */your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/* and create a json file (*/your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/per_utt.json*) which contains all necessary information to evalute the meeting transcription performance.
+Note that the path of the json file is also outputed in the console when the script is finished,
+
+As next step, the separated signals can be trancribed using the created json file as input:
+```bash
+python -m libriwasn.reference_system.transcribe --json_path /your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/per_utt.json
+```
+This will create an STM file for the transcription hypothesis: */your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/stm/hyp.stm*.
+Again the path of the STM file is outputed in the console when the script is finished.
+
+Finally, the cpWER can be calculated:
+```bash
+meeteval-wer cpwer -h /your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/stm/hyp.stm -r /your/database/path/ref_transcription.stm
+```
+This command produces a json file for the average cpWER (*/your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/stm/hyp_cpwer.json*) and another file with a more detailed description per session (*/your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/stm/hyp_cpwer_per_reco.json*).
+Finally, run the following command in order to get the cpWER per overlap condition:
+```bash
+python -m libriwasn.reference_system.wer_per_overlap_condition --json_path /your/libriwasn_experiment/path/separated_sources/sys2_libriwasn200/stm/hyp_cpwer_per_reco.json
+```
+
+##### Overview of experiments
+To generate the audio data for the different experiments described in the paper run one of the following commands
+
+Clean:
+```bash
+python -m libriwasn.reference_system.segment_meetings with clean db_json=/your/database/path/libriwasn.json
+```
+LibriCSS Sys-1:
+```bash
+python -m libriwasn.reference_system.segment_meetings with libricss db_json=/your/database/path/libriwasn.json
+```
+LibriCSS Sys-2:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys2_libriwasn200 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>200</sup> Sys-1:
+```bash
+python -m libriwasn.reference_system.segment_meetings with libriwasn200 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>200</sup> Sys-2:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys2_libriwasn200 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>200</sup> Sys-3:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys3_libriwasn200 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>200</sup> Sys-4:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys4_libriwasn200 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>800</sup> Sys-1:
+```bash
+python -m libriwasn.reference_system.segment_meetings with slibriwasn800 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>800</sup> Sys-2:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys2_libriwasn800 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>800</sup> Sys-3:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys3_libriwasn800 db_json=/your/database/path/libriwasn.json
+```
+LibriWASN<sup>800</sup> Sys-4:
+```bash
+python -m libriwasn.reference_system.separate_sources with sys4_libriwasn800 db_json=/your/database/path/libriwasn.json
+```
 
 # Citation
 If you are using the LibriWASN data set or this code please cite the following paper:
