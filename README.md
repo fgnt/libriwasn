@@ -14,15 +14,34 @@ Note that the  sampling clocks of the different devices are not synchronized so 
 
 
 # Zenodo
-The data set and auxiliary materials are availabe on [Zenodo](https://zenodo.org/record/7960972).  
+The data set and auxiliary materials are available on [Zenodo](https://zenodo.org/record/7960972).
 Available auxiliary:
    * Pictures of the recording setups
    * Speaker and microphone position information 
    * Ground-truth diarization information of who speaks when
 
+# Installation
+Clone the repository:
+```bash
+git clone https://github.com/fgnt/libriwasn.git
+```
+
+Install package:
+```bash
+pip install -e ./libriwasn
+```
+
+In order to calculate the concatenated minimum-Permutation Word Error Rate (cpWER), we utilize the [meeteval package](https://github.com/fgnt/meeteval).
+This can be installed in the following way:
+```bash
+pip install cython
+git clone https://github.com/fgnt/meeteval
+pip install -e ./meeteval[cli]
+```
+
 # Download
 To download the LibriWASN data set we provide two options stated below.
-Note that the LibriCSS is addtionally downloades because it is used as reference in the experiments and its transcriptions are also used for the LibriWASN data.
+Note that the LibriCSS is addtionally downloaded because it is used as reference in the experiments and its transcriptions are also used for the LibriWASN data.
 
 ##### Download using Python
 To download the data to your desired direcetory, e.g., */your/database/path/*, run the following command:
