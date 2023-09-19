@@ -109,7 +109,86 @@ The downloaded data has the following database structure w.r.t. the path your de
     ├── redme.txt
     └── segment_libricss.py
 ```
+# Usage of the data set
+To run the reference system you first have to create a json file for the database:
+```bash
+python -m libriwasn.databases.create_json -db /your/database/path/
+```
 
+The generated json file has the following structure:
+```python
+{
+    "datasets": {
+        "libricss": {
+            example_id: {
+                "audio_path": {
+                    "clean_observation": ...,  # clean speech mixture
+                    "observation": ...,        # recorded multi-channel signal
+                    "played_signals": ...      # clean signal per speaker
+                },
+                "num_samples": { 
+                    "clean_observation": ...,
+                    "observation": ...,
+                    "original_source": [..., ...],
+                    "played_signals": ...
+                },
+                "onset": {  # Onset of utterance in samples
+                    "original_source": [..., ...]
+                }
+                "overlap_condition": ..., # 0L, 0S, OV10, OV20, OV30 or OV40
+                "session": ..., # session0, session1, ... or session9 
+                "source_id": [..., ...], 
+                "speaker_id": [..., ...], 
+                "transcription": [..., ...],
+            }
+        },
+        "libriwasn200": {
+            "audio_path": {
+                "clean_observation": ...,
+                "observation": {
+                    "Nexus": ...,
+                    "Pixel6a": ...,
+                    "Pixel6b": ...,
+                    "Pixel7": ...,
+                    "Soundcard": ...,
+                    "Xiaomi": ...,
+                    "asnupb2": ...,
+                    "asnupb4": ...,
+                    "asnupb7": ...
+                },
+                "played_signals": ...
+            },
+            ...
+        },
+        "libriwasn800": {
+            "audio_path": {
+                "clean_observation": ...,
+                "observation": {
+                    "Nexus": ...,
+                    "Pixel6a": ...,
+                    "Pixel6b": ...,
+                    "Pixel7": ...,
+                    "Soundcard": ...,
+                    "Xiaomi": ...,
+                    "asnupb2": ...,
+                    "asnupb4": ...,
+                    "asnupb7": ...
+                },
+                "played_signals": ...
+            },
+            ...
+        }, 
+    }
+}
+```
+Note that the onsets of the utterances and also the lengths of the utterances (num_samples) fit to the recording of the *Soundcard*. 
+Due to sampling rate offsets (SROs) and sampling time offsets (STOs) of the other devices w.r.t. the *Soundcard* both quantities will not perfectely fit to the recordings of the other devices.  
+
+Create a segmental time mark (STM) file for the reference transcription:
+```bash
+python -m libriwasn.databases.write_ref_stm --json_path /your/database/path/libriwasn.json
+```
+This STM file is used when calculating the  concatenated minimum-Permutation Word Error Rate (cpWER).
 
 # Citation
 If you are using the LibriWASN data set or this code please cite the following paper:
