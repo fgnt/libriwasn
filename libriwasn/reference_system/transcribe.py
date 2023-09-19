@@ -23,8 +23,8 @@ from libriwasn.asr.espnet_wrapper import ESPnetASR
     '--json_path',
     type=str,
     default=None,
-    help=('Path of the json-file, which specifies the utterances to be '
-          'described. Defaults to "libriwasn/libriwasn.json".')
+    help=('Path of the json-file, which specifies the utterances '
+          'to be transcribed.')
 )
 @click.option(
     '--output_dir',
@@ -47,7 +47,9 @@ from libriwasn.asr.espnet_wrapper import ESPnetASR
     help='Enabe GPU-based decoding. GPU-based decoding is disabled by default'
 )
 def main(json_path, output_dir, asr_model_dir, enable_gpu):
-    assert json_path is not None
+    msg = ('You have to define the path of the json file containting the '
+           'files to be transcribed.')
+    assert json_path is not None, msg
     json_path = Path(json_path).absolute()
     if output_dir is not None:
         output_dir = Path(output_dir).absolute()
