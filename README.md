@@ -2,10 +2,6 @@
 <h3 align="center">A Data Set for Meeting Separation, Diarization, and Recognition
 with Asynchronous Recording Devices</h3>
 
-**NOTE:** This repository currently is **under construction**.
-We will update and extend the code within the next weeks.
-
-
 Tools and reference meeting transcription pipeline of the LibriWASN data set ([preprint](http://arxiv.org/abs/2308.10682), [Zenodo data set link](https://zenodo.org/record/7960972)).
 
 The LibriWASN data set  consists of recordings of the same audio signals which also were played back to record the [LibriCSS](https://github.com/chenzhuo1011/libri_css) data set. 
