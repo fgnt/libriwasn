@@ -88,17 +88,23 @@ def segment_audio(
         if audio_key == 'played_signals':
             sigs = pb.io.load_audio(example['audio_path']['played_signals'])
         elif isinstance(example['audio_path'][audio_key], str):
+            # LibriCSS and 'clean'
             sig = pb.io.load_audio(example['audio_path'][audio_key])
             if sig.ndim > 1:
                 sig = sig[0]
         else:
+            # LibriWASN
             msg = (f'device ({device}) has to be chosen from '
                    f'{list(example["audio_path"][audio_key].keys())}')
             assert device in list(example['audio_path'][audio_key].keys()), msg
             sig = pb.io.load_audio(example['audio_path'][audio_key][device])
             if sig.ndim > 1:
                 sig = sig[0]
-
+            # The onsets and offsets specified in the database json are
+            # synchronous to the recordings of the 'Soundcard'. Since all other
+            # devices have a sampling rate offset w.r.t. the 'Soundcard' the
+            # onsets and offsets have to be adapted to match the recordings
+            # of the other devices.
             if device != 'Soundcard':
                 ref_ch = pb.io.load_audio(
                     example['audio_path'][audio_key]['Soundcard']
@@ -121,6 +127,10 @@ def segment_audio(
             if sro is not None:
                 onset = ref_time_to_mic_time(onset, sro)
                 offset = ref_time_to_mic_time(offset, sro)
+            # Manipulate onset and offset to compensate for the signals time of
+            # flight (TOF) and tiny errors of the time alignment, e.g., due to
+            # small errors of the sampling rate offset estimates or small
+            # sampling time offsets
             activities[spk_id].append(
                 (onset - margin, offset + margin)
             )
