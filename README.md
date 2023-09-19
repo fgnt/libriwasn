@@ -269,6 +269,24 @@ LibriWASN<sup>800</sup> Sys-4:
 python -m libriwasn.reference_system.separate_sources with sys4_libriwasn800 db_json=/your/database/path/libriwasn.json
 ```
 
+##### Speedup 
+Most scripts of the refercne system can be parallelized (start <num_processes>): 
+```bash
+mpiexec -np <num_processes> python -m libriwasn.reference_system.segment_meetings ...
+```
+```bash
+mpiexec -np <num_processes> python -m libriwasn.reference_system.separate_sources ...
+```
+```bash
+mpiexec -np <num_processes> python -m libriwasn.reference_system.transcribe ...
+```
+
+To speed up the transcription system GPU-based decoding can be enabled ():
+```bash
+python -m libriwasn.reference_system.transcribe --enable_gpu=True ...
+```
+Note that a parellelization via MPI (mentioned above) is not supported for GPU-based decoding.
+
 # Citation
 If you are using the LibriWASN data set or this code please cite the following paper:
 
