@@ -85,7 +85,19 @@ setup(
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-    ],  # Optional
+        'click',
+        'espnet2',
+        'espnet_model_zoo',
+        'numpy',
+        'sacred'
+        'torch',
+        'tqdm',
+        'dlp_mpi @ git+http://github.com/fgnt/dlp_mpi',
+        'lazy_dataset @ git+http://github.com/fgnt/lazy_dataset',
+        'paderbox @ git+http://github.com/fgnt/paderbox',
+        'paderwasn @ git+http://github.com/fgnt/paderwasn',
+        'pb_bss @ git+http://github.com/fgnt/pb_bss'
+    ],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
