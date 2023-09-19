@@ -29,8 +29,7 @@ def main(json_path, stm_path):
     ds = JsonDatabase(json_path)
     ds = ds.get_dataset('libricss')
     for example in ds:
-        session_id = \
-            example["example_id"].split('session')[-1].split('_')[0]
+        short_id = f'{example["overlap_condition"]}_{example["session"]}'
         speaker_ids = example['speaker_id']
         transcriptions = example['transcription']
         onset = example['onset']['original_source']
@@ -38,7 +37,7 @@ def main(json_path, stm_path):
         for (spk_id, transcription, onset, length) \
                 in zip(speaker_ids, transcriptions, onset, num_samples):
             new_line = STMLine(
-                filename=f'{example["overlap_condition"]}_session{session_id}',
+                filename=short_id,
                 channel=0,
                 speaker_id=spk_id,
                 begin_time=onset,
