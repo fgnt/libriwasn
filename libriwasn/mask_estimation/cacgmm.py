@@ -73,7 +73,7 @@ def get_tf_masks(
             Initial estimate for the posteriors of the CACGMM (Shape:
             (FFT size / 2 + 1 x number of speakers + 1 x number of frames))
         guide (numpy.ndarray):
-            Guide (boolean array of actvitities per source) used in the first
+            Guide (boolean array of activities per source) used in the first
             EM-iterations (Shape: (number of speakers + 1 x number of frames))
         guided_iter:
             Number of guided iterations
