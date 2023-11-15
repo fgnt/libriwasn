@@ -61,8 +61,7 @@ def sys3_libriwasn200():
 
 @exp.named_config
 def sys4_libriwasn200():
-    storage_dir = ('/net/vol/tgburrek/experiments/libriwasn_upload/'
-                   'separated_sources/sys4_libriwasn200/')
+    storage_dir = 'separated_sources/sys4_libriwasn200/'
     data_set = 'libriwasn200'
 
 
