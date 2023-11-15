@@ -42,7 +42,7 @@ Note that the LibriCSS is addtionally downloaded because it is used as reference
 ##### Download using Python
 To download the data to your desired direcetory, e.g., */your/database/path/*, run the following command:
 ```bash 
-python -m libriwasn.databases.download -db /your/database/path/
+python -m libriwasn.database.download -db /your/database/path/
 ```
 
 ##### Download on Linux OS
@@ -102,13 +102,13 @@ The downloaded data has the following database structure w.r.t. the path your de
     ├── ...
     ├── OV40
     ├── all_res.json
-    ├── redme.txt
+    ├── readme.txt
     └── segment_libricss.py
 ```
 # Usage of the data set
 To run the reference system you first have to create a json file for the database:
 ```bash
-python -m libriwasn.databases.create_json -db /your/database/path/
+python -m libriwasn.database.create_json -db /your/database/path/
 ```
 
 The generated json file has the following structure:
@@ -182,7 +182,7 @@ Due to sampling rate offsets (SROs) and sampling time offsets (STOs) of the othe
 
 Create a segmental time mark (STM) file for the reference transcription:
 ```bash
-python -m libriwasn.databases.write_ref_stm --json_path /your/database/path/libriwasn.json
+python -m libriwasn.database.write_ref_stm --json_path /your/database/path/libriwasn.json
 ```
 This STM file is used when calculating the  concatenated minimum-Permutation Word Error Rate (cpWER).
 
@@ -292,12 +292,12 @@ In the paper we used Kaldi-alignments to segment the clean LibriSpeech utterance
 Here, we use the segmentation using an energy-based voice activity detection (VAD), which is also used for all other systems. 
 We also fixed as small error in the VAD-based segmentation w.r.t. the code used to write the paper.
 
-The ground truth diarization information, which is provided via Zenodo, tends to underestimate the speakers' activities.
+The diarization information, which is provided via Zenodo, tends to underestimate the speakers' activities.
 Therefore, we here adapt the utterance boundaries (see *onset* and *num_samples* in the database json file) provided by LibriCSS data set to the LibriWASN data set in order to obtain the activities for the experiments with an oracle segmentation.  
 
 Moreover, we observed that there are some abrupt changes in the amount of partly around 1000 samples in the time differences of arrival (TDOAs) between the LibriCSS recordings and the clean speech mixture.
 These high TDOAs cannot be explained by the time differences of flight (TDOFs) and therefore may result from  technical issues during the recording. 
-Another effect of these high TDOAs is tha the utterance boundaries used for the oracle segmentation experiment on LibriCSS might not always perfectly fit to the LibriCSS recordings.
+Another effect of these high TDOAs is that the utterance boundaries used for the oracle segmentation experiment on LibriCSS might not always perfectly fit to the LibriCSS recordings.
 This might result in a slightly higher cpWER compared to the LibriWASN data sets which do not show this effect. 
 
 # Citation
