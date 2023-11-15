@@ -86,10 +86,10 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
         'click',
-        'espnet2',
+        'espnet',
         'espnet_model_zoo',
         'numpy',
-        'sacred'
+        'sacred',
         'torch',
         'tqdm',
         'dlp_mpi @ git+http://github.com/fgnt/dlp_mpi',
