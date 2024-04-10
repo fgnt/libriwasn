@@ -47,13 +47,13 @@ def extract_files(downloaded_files):
 def download_aux_files(database_path):
     print('Download auxiliary material of LibriWASN')
     files = [
-        'https://zenodo.org/record/7960972/files/ccby4.txt',
-        'https://zenodo.org/record/7960972/files/LibirWASN200_Picture.png',
-        'https://zenodo.org/record/7960972/files/LibriWASN200_Positions.pdf',
-        'https://zenodo.org/record/7960972/files/LibriWASN200_Setup.png',
-        'https://zenodo.org/record/7960972/files/Positions200.pdf',
-        'https://zenodo.org/record/7960972/files/Positions800.pdf',
-        'https://zenodo.org/record/7960972/files/readme.txt',
+        'https://zenodo.org/record/10952434/files/ccby4.txt',
+        'https://zenodo.org/record/10952434/files/LibirWASN200_Picture.png',
+        'https://zenodo.org/record/10952434/files/LibriWASN200_Positions.pdf',
+        'https://zenodo.org/record/10952434/files/LibriWASN200_Setup.png',
+        'https://zenodo.org/record/10952434/files/Positions200.pdf',
+        'https://zenodo.org/record/10952434/files/Positions800.pdf',
+        'https://zenodo.org/record/10952434/files/readme.txt',
     ]
     download_file_list(files, database_path)
     target_dir = database_path / 'LibriWASN' / 'aux_files'
@@ -66,20 +66,20 @@ def download_aux_files(database_path):
 def download_libriwasn200(database_path):
     print('Download LibriWASN 200')
     files = [
-        'https://zenodo.org/record/7960972/files/LibriWASN_200_0L.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_200_0S.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_200_OV10.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_200_OV20.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_200_OV30.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_200_OV40.zip'
+        'https://zenodo.org/record/10952434/files/LibriWASN_200_0L.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_200_0S.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_200_OV10.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_200_OV20.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_200_OV30.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_200_OV40.zip'
     ]
     md5_checksums = [
-        '70d44a07ab906cda2385a7e7b4a431bd',
-        '966d40081d67b71f5d337610cd8fb176',
-        'e9f0a19c2348a5cd0c9b9e12740a9d72',
-        '7b6fcf5357d7686fa14792c019c8b9c2',
-        '0c3f95be84bb0500a4d8212085c2abcc',
-        '0a4d911240a309397d24c192a96fec11'
+        '2327be91485110031181782c1605bd86',
+        '531549b8528a10e1eb9ee6ad9f800073',
+        'b6eecbd9dd4a1a2074b7cd681b722c5c',
+        '1a8ba4ab2d74300fbe8fdb1de31d3379',
+        '8cc0d8561ac9571561e8d5ed628404db',
+        '9d33cdaea1b1c968d8f885c80ce4d761'
     ]
     downloaded_files = download_files(files, database_path)
     for file, check_sum in zip(downloaded_files, md5_checksums):
@@ -93,20 +93,20 @@ def download_libriwasn200(database_path):
 def download_libriwasn800(database_path):
     print('Download LibriWASN 800')
     files = [
-        'https://zenodo.org/record/7960972/files/LibriWASN_800_0L.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_800_0S.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_800_OV10.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_800_OV20.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_800_OV30.zip',
-        'https://zenodo.org/record/7960972/files/LibriWASN_800_OV40.zip'
+        'https://zenodo.org/record/10952434/files/LibriWASN_800_0L.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_800_0S.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_800_OV10.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_800_OV20.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_800_OV30.zip',
+        'https://zenodo.org/record/10952434/files/LibriWASN_800_OV40.zip'
     ]
     md5_checksums = [
-        '2ae30f25ea88d463d8b6f3c79286f160',
-        'ec5ffca2ebe184ac1bbc416c61fdab18',
-        'eba80ebd3cd868567fbfb3f46e222350',
-        'a45f7d73d1dfa9c0c5a724788d1cd993',
-        '5d681c70dd919af1080a129237d2ef32',
-        '10efa8b713a6dc29a3e3ead4a744f050'
+        'e9cbaf2c4e35aeea0ac14c7edf9c181f',
+        'aa8442d009dd669c14f680ba20e2143f',
+        '5e36a163669bbfaad01c617a6f7e4696',
+        'f8efb703b0dca20a03bbcb2f9ef07a07',
+        'c76c0a22da2e7299b06fe239b7681615',
+        'd3fdc9b79c33025eb0fa353e31a80c71'
     ]
     downloaded_files = download_files(files, database_path)
     for file, check_sum in zip(downloaded_files, md5_checksums):
