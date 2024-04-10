@@ -1,45 +1,45 @@
 #!/bin/bash
 
 echo "Creating md5checksum file"
-echo "70d44a07ab906cda2385a7e7b4a431bd  LibriWASN_200_0L.zip">check.md5
-echo "966d40081d67b71f5d337610cd8fb176  LibriWASN_200_0S.zip">>check.md5
-echo "e9f0a19c2348a5cd0c9b9e12740a9d72  LibriWASN_200_OV10.zip">>check.md5
-echo "7b6fcf5357d7686fa14792c019c8b9c2  LibriWASN_200_OV20.zip">>check.md5
-echo "0c3f95be84bb0500a4d8212085c2abcc  LibriWASN_200_OV30.zip">>check.md5
-echo "0a4d911240a309397d24c192a96fec11  LibriWASN_200_OV40.zip">>check.md5
-echo "2ae30f25ea88d463d8b6f3c79286f160  LibriWASN_800_0L.zip">>check.md5
-echo "ec5ffca2ebe184ac1bbc416c61fdab18  LibriWASN_800_0S.zip">>check.md5
-echo "eba80ebd3cd868567fbfb3f46e222350  LibriWASN_800_OV10.zip">>check.md5
-echo "a45f7d73d1dfa9c0c5a724788d1cd993  LibriWASN_800_OV20.zip">>check.md5
-echo "5d681c70dd919af1080a129237d2ef32  LibriWASN_800_OV30.zip">>check.md5
-echo "10efa8b713a6dc29a3e3ead4a744f050  LibriWASN_800_OV40.zip">>check.md5
+echo "2327be91485110031181782c1605bd86  LibriWASN_200_0L.zip">check.md5
+echo "531549b8528a10e1eb9ee6ad9f800073  LibriWASN_200_0S.zip">>check.md5
+echo "b6eecbd9dd4a1a2074b7cd681b722c5c  LibriWASN_200_OV10.zip">>check.md5
+echo "1a8ba4ab2d74300fbe8fdb1de31d3379  LibriWASN_200_OV20.zip">>check.md5
+echo "8cc0d8561ac9571561e8d5ed628404db  LibriWASN_200_OV30.zip">>check.md5
+echo "9d33cdaea1b1c968d8f885c80ce4d761  LibriWASN_200_OV40.zip">>check.md5
+echo "e9cbaf2c4e35aeea0ac14c7edf9c181f  LibriWASN_800_0L.zip">>check.md5
+echo "aa8442d009dd669c14f680ba20e2143f  LibriWASN_800_0S.zip">>check.md5
+echo "5e36a163669bbfaad01c617a6f7e4696  LibriWASN_800_OV10.zip">>check.md5
+echo "f8efb703b0dca20a03bbcb2f9ef07a07  LibriWASN_800_OV20.zip">>check.md5
+echo "c76c0a22da2e7299b06fe239b7681615  LibriWASN_800_OV30.zip">>check.md5
+echo "d3fdc9b79c33025eb0fa353e31a80c71  LibriWASN_800_OV40.zip">>check.md5
 
 echo "Creating Path"
 mkdir -p LibriWASN/aux_files
 echo "Start Additional file download"
-wget https://zenodo.org/record/7960972/files/ccby4.txt -q --show-progress -P LibriWASN/aux_files/
-wget https://zenodo.org/record/7960972/files/LibirWASN200_Picture.png -q --show-progress -P LibriWASN/aux_files/
-wget https://zenodo.org/record/7960972/files/LibriWASN200_Positions.pdf -q --show-progress -P LibriWASN/aux_files/
-wget https://zenodo.org/record/7960972/files/LibriWASN200_Setup.png -q --show-progress -P LibriWASN/aux_files/
-wget https://zenodo.org/record/7960972/files/Positions200.pdf -q --show-progress -P LibriWASN/aux_files/
-wget https://zenodo.org/record/7960972/files/Positions800.pdf -q --show-progress -P LibriWASN/aux_files/
-wget https://zenodo.org/record/7960972/files/readme.txt -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/10952434/files/ccby4.txt -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/10952434/files/LibirWASN200_Picture.png -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/10952434/files/LibriWASN200_Positions.pdf -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/10952434/files/LibriWASN200_Setup.png -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/10952434/files/Positions200.pdf -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/10952434/files/Positions800.pdf -q --show-progress -P LibriWASN/aux_files/
+wget https://zenodo.org/record/10952434/files/readme.txt -q --show-progress -P LibriWASN/aux_files/
 
 
 echo "Start Audio file download"
-wget https://zenodo.org/record/7960972/files/LibriWASN_200_0L.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_200_0S.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_200_OV10.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_200_OV20.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_200_OV30.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_200_OV40.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_200_0L.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_200_0S.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_200_OV10.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_200_OV20.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_200_OV30.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_200_OV40.zip -q --show-progress
 
-wget https://zenodo.org/record/7960972/files/LibriWASN_800_0L.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_800_0S.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_800_OV10.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_800_OV20.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_800_OV30.zip -q --show-progress
-wget https://zenodo.org/record/7960972/files/LibriWASN_800_OV40.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_800_0L.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_800_0S.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_800_OV10.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_800_OV20.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_800_OV30.zip -q --show-progress
+wget https://zenodo.org/record/10952434/files/LibriWASN_800_OV40.zip -q --show-progress
 
 echo "Checking md5sums"
 if md5sum -c check.md5; then
