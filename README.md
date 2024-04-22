@@ -26,6 +26,10 @@ Install package:
 ```bash
 pip install -e ./libriwasn
 ```
+If you want to use the provided automatic speech recognition (ASR) system, please install the required packages:
+```bash
+pip install -e ./libriwasn[asr]
+``` 
 
 In order to calculate the concatenated minimum-Permutation Word Error Rate (cpWER), we utilize the [meeteval package](https://github.com/fgnt/meeteval).
 This can be installed in the following way:

@@ -86,11 +86,8 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
         'click',
-        'espnet',
-        'espnet_model_zoo',
         'numpy',
         'sacred',
-        'torch',
         'tqdm',
         'dlp_mpi @ git+http://github.com/fgnt/dlp_mpi',
         'lazy_dataset @ git+http://github.com/fgnt/lazy_dataset',
@@ -110,6 +107,11 @@ setup(
     extras_require={  # Optional
         'dev': ['check-manifest'],
         'test': ['coverage'],
+        'asr': [
+            'espnet',
+            'espnet_model_zoo',
+            'torch'
+        ]
     },
 
     # If there are data files included in your packages that need to be
