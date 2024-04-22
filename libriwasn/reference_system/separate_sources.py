@@ -132,7 +132,7 @@ def separate_sources(
                 single_ch = True
 
             sigs, devices = load_signals(
-                example, devices=devices_cacgmm, single_ch=single_ch,
+                example, devices=devices_mvdr, single_ch=single_ch,
                 ref_device=ref_device_sync, return_devices=True
             )
             if len(devices) > 1:
