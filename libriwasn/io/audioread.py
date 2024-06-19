@@ -23,18 +23,18 @@ def load_signals(
             signals are returned first in the result.
 
         single_ch (bool, list):
-            If true, load all channels for each device. Otherwise,
+            If False, load all channels for each device. Otherwise,
             only the first channel is loaded. If a device list is provided
             and single_ch is bool, the condition gets applied for all devices.
-            Alternativly, a list with each element if type bool stating the
-            channel selcetion for each device in the order of the device list.
+            Alternatively, a list with each element of type bool stating the
+            channel selection for each device in the order of the device list.
 
         return_devices (bool):
-            If true, return list of the devices in the order of the loaded
+            If True, return list of the devices in the order of the loaded
             signals with reference device in the first place.
 
         same_len (bool):
-            If true, return numpy.array of signals where signals
+            If True, return numpy.array of signals where signals
             are padded to the maximum length of all channels.
 
     Returns:
@@ -79,7 +79,7 @@ def load_signals(
                 max_len = np.maximum(max_len, len(_sig))
             else:
                 num_chs += _sig.shape[0]
-                max_len = np.maximum(max_len, np.max(_sig.shape[-1]))
+                max_len = np.maximum(max_len, _sig.shape[-1])
 
         sigs_temp = np.zeros((num_chs, max_len))
         ch = 0
