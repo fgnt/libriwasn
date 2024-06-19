@@ -1,6 +1,6 @@
 import numpy as np
 
-from libriwasn.mask_estimation import dilate, erode
+from libriwasn.utils import dilate, erode
 
 
 def estimate_noise_class(
