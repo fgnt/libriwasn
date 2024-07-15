@@ -1,6 +1,7 @@
 import hashlib
 from pathlib import Path
 import shutil
+from subprocess import run
 
 import click
 from paderbox.io.download import download_file
@@ -119,12 +120,10 @@ def download_libriwasn800(database_path):
 
 def download_libricss(database_path):
     print('Download LibriCSS')
-    file = (
-        'https://drive.google.com/u/0/uc?id=1Piioxd5G_85K9Bhcr8ebdhXx0CnaHy7l'
-        '&export=download&confirm=t&uuid=645065b5-bb2e-4418-971a-6d00aa76b1b1'
-        '&at=AB6BwCDaN-TvrESmuB75j3L1cQm6:1693926341475'
-    )
-    download_file(file, database_path / 'libricss.zip')
+    link = 'https://docs.google.com/uc?export=download' \
+           '&id=1Piioxd5G_85K9Bhcr8ebdhXx0CnaHy7l'
+    if shutil.which('gdown'):
+        run(['gdown', link, '-Olibricss.zip'])
     print('Extract LibriCSS')
     extract_file(database_path / 'libricss.zip')
     shutil.move(database_path / 'for_release', database_path / 'LibriCSS')
