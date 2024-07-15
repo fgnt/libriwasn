@@ -72,5 +72,5 @@ echo "Start download of LibriCSS via https://docs.google.com/uc?export=download&
 echo "Adjust folder structure"
 mv LibriWASN/200 LibriWASN/libriwasn_200
 mv LibriWASN/800 LibriWASN/libriwasn_800
-mv for_release LibriCSS
+# mv for_release LibriCSS
 
