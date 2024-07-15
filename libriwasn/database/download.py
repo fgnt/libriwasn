@@ -124,6 +124,11 @@ def download_libricss(database_path):
            '&id=1Piioxd5G_85K9Bhcr8ebdhXx0CnaHy7l'
     if shutil.which('gdown'):
         run(['gdown', link, '-Olibricss.zip'])
+    else:
+        raise OSError(
+            'gdown is not installed, You have to install it'
+            ' to be able to download LibriCSS.'
+        )
     print('Extract LibriCSS')
     extract_file(database_path / 'libricss.zip')
     shutil.move(database_path / 'for_release', database_path / 'LibriCSS')
